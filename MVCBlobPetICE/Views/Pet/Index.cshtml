@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MVCBlobPetICE.Models.Pet>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index2</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.breed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.adoptionStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.imageUrl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.breed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.adoptionStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imageUrl)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+
+            /*<h3 class="text-success">Uploaded Images</h3>
+            @if (Model != null && Model.Count > 0)
+            {
+                <ul class="list-group">
+                    @foreach (var imageUrl in Model)
+                    {
+                        <li class="list-group-item">
+                            <a asp-action="ViewFile" asp-controller="File" asp-route-fileUrl="@imageUrl" class="text-decoration-none">
+                                @System.IO.Path.GetFileName(imageUrl)
+                            </a>  - @imageUrl
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="fst-italic text-muted">No files uploaded yet.</p>
+            }*/
+}
+    </tbody>
+</table>

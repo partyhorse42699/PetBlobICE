@@ -1,0 +1,61 @@
+﻿@model MVCBlobPetICE.Models.Pet
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Pet</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="age" class="control-label"></label>
+                <input asp-for="age" class="form-control" />
+                <span asp-validation-for="age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="breed" class="control-label"></label>
+                <input asp-for="breed" class="form-control" />
+                <span asp-validation-for="breed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="adoptionStatus" class="control-label"></label>
+                <input asp-for="adoptionStatus" class="form-control" />
+                <span asp-validation-for="adoptionStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <form asp-action="Upload" asp-controller="File" method="post" enctype="multipart/form-data" class="mb-4 p-3 border rounded bg-light shadow-sm">
+                    <div class="mb-3">
+                        <label for="uploadedFile" class="form-label">Select an image:</label>
+                        <input type="file" name="uploadedFile" id="uploadedFile" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+            </div>
+            <p> </p>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
